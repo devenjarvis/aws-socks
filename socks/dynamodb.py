@@ -2,7 +2,7 @@ import boto3
 import json
 import decimal
 from botocore.exceptions import ClientError
-from boto3.dynamodb.conditions import Key, Attr
+from boto3.dynamodb.conditions import Key
 
 # Helper class to convert a DynamoDB item to JSON.
 class DecimalEncoder(json.JSONEncoder):
@@ -98,8 +98,7 @@ def delete_item(table_name, key, session=boto3, region_name='us-east-1', **dynam
 
 #TODO: Expand list of supported operators. Not really ready for use.
 #TODO: Add error handling
-#TODO: Write a unit test
-def query_table(table_name, key_condition_expression, session=boto3, region_name='us-east-1', **dynamo_table_query_kwargs):
+def query_table(table_name: str, key_condition_expression, session=boto3, region_name: str = 'us-east-1', **dynamo_table_query_kwargs):
     dynamodb_resource = session.resource('dynamodb', region_name=region_name)
     table = dynamodb_resource.Table(table_name)
 
@@ -111,6 +110,16 @@ def query_table(table_name, key_condition_expression, session=boto3, region_name
     results = []
     for i in response['Items']:
         results.append(json.dumps(i, cls=DecimalEncoder))
+
+    # If LastEvaluatedKey is in response, then there are more records to retrieve.  Add the LastEvaluatedKey to kwargs
+    # and query again until all items are retrieved.
+    while 'LastEvaluatedKey' in response:
+        dynamo_table_query_kwargs['LastEvaluatedKey'] = response['LastEvaluatedKey']
+
+        response = table.query(**dynamo_table_query_kwargs)
+
+        for i in response['Items']:
+            results.append(json.dumps(i, cls=DecimalEncoder))
 
     return results
 
