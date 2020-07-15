@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "aws-socks"
+version = "0.2.3"
+description = "A wrapper for boto3 to provide one-liners for common AWS tasks."
+authors = ["Deven Jarvis <devenjarvis@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/devenjarvis/aws-socks"
+repository = "https://github.com/devenjarvis/aws-socks"
+keywords = ["boto3", "AWS"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+]
+
+packages = [
+    {include = "socks"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+boto3 = "^1.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+pytest-cov = "^2.7"
+yapf = "^0.27.0"
+freezegun = "^0.3.12"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
