@@ -44,7 +44,7 @@ Once installed use `import socks` to start using it.
 - This package expects Python version 3.6 and up. There are no plans to support previous versions of Python.
 
 ## 🤠 Contributors <a name = "contributors"></a>
-- [@jones-chris] (https://github.com/jones-chris) - Maintainer
+- [@jones-chris](https://github.com/jones-chris) - Maintainer
 - [@devenjarvis](https://github.com/devenjarvis) - Maintainer
 - [@artkinghur](https://github.com/artkinghur) - SSM get_parameter exception handling
 - [@arief-akbarr](https://github.com/arief-akbar) - Scan Dynamo Operation, Invoke Lambda Function
