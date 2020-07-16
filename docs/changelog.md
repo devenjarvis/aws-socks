@@ -7,7 +7,7 @@
 
 
 ## 0.2.4
-🚀 Added this docs site!
+🚀 Added this docs site! <br/>
 🔧 Fix something with dynamodb
 
 ## 0.2.3
