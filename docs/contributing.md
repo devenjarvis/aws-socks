@@ -3,8 +3,25 @@
 Thank you for contributing to socks! This document shows you how to get started
 
 ## General
-- The [Codebase Structure](/CODEBASE_STRUCTURE.md) has detailed information about how the various files in this project are structured
-- Please ensure that any changes you make are in accordance with the [Coding Guidelines](/CODING_GUIDELINES.md) of this repo
+
+### Codebase Structure
+The structure to socks is fairly simple - one module (i.e. .py file) per AWS service. 
+- If a service has a common acronym or shorthand (like S3) then use that, elsewise prefer the full name (like athena) with no spaces
+- Following standard Python naming standards all file names should be lowercase with single words preferred
+
+### Coding Guidelines
+- Function names and variable names should all be lower_case_with_underscores
+- Class names should use the CapWords convention
+- Function names should be short but descriptive.
+- All modules should be imported into the __init__.py file to simplify usage
+- 3rd party packages (except for boto3) should be generally avoided.
+- Standard Python packages are allowed
+- Indent with 4 spaces
+- Function calls have no space before the parentheses
+- A space after each comma, but without a space before
+- All operators must have one space before and one after
+- There should not be more than one contiguous blank line
+- There should be no empty comments
 
 ## Getting the code
 
@@ -57,4 +74,4 @@ Thank you for contributing to socks! This document shows you how to get started
 - Make a pull request
   - Make sure you send the PR to the <code>develop</code> branch
 
-PRs will be reviewed by maintainers of the project and wither rejected with detailed change requests, or merged into develop (and eventually master) for all to use.
+PRs will be reviewed by maintainers of the project and either rejected with detailed change requests, or merged into develop (and eventually master) for all to use.
