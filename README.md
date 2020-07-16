@@ -17,7 +17,7 @@
 - [Roadmap](https://github.com/devenjarvis/aws-socks/wiki/Roadmap)
 
 ## 🧐 About <a name = "about"></a>
-Current Version: 0.2.3
+Current Version: 0.2.4
 
 `socks` is a Python library designed to abstract common AWS tasks as one liners. It is opinionated in the pursuit to provide the most performant implementation that can be leveraged generally, but also attempts to offer reasonable levels of customization to the developer by supporting most boto3 functionality.
 
