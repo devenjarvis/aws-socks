@@ -31,7 +31,7 @@ To upgrade an existing install use:
 
 Once installed use `import socks` to start using it.
 
-### Prerequisites
+### Prerequisites {docsify-ignore}
 - The only external dependency for this library is boto3 which is packaged within the library.
 - This package expects Python version 3.6 and up. There are no plans to support previous versions of Python.
 

@@ -3,13 +3,11 @@
 **Legend:** <br/>
 🚀 - Something new! <br/>
 🔧 - Something fixed! <br/>
-✨ - Something improved! <br/>
-Anything else - Something fun!
+✨ - Something improved!
 
-## 0.2.5
-🚀 Added a decent docs site!
 
 ## 0.2.4
+🚀 Added this docs site!
 🔧 Fix something with dynamodb
 
 ## 0.2.3
