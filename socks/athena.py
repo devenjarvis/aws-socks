@@ -49,13 +49,13 @@ def query(sql_statement, database, bucket, key='results', local_filepath=None, w
                 
                 return data
             else:
-                print(f"ERROR: Athena query did not succeed and ended with state {status['State']} because {status['StateChangeReason']}")
+                print(f"ERROR: Athena query did not succeed")
                 return None
         else:
             return True
     elif status == 'FAILED':
         status = athena_client.get_query_execution(QueryExecutionId = execution_id)['QueryExecution']['Status']
-        print(f"ERROR: Athena query did not succeed and ended with state {status['State']} because {status['StateChangeReason']}")
+        print(f"ERROR: Athena query did not succeed")
         return None
     elif status == 'CANCELLED':
         print("INFO: Athena query was cancelled")
