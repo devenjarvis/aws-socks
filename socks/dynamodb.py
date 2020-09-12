@@ -121,6 +121,12 @@ def query_table(table_name: str, key_condition_expression, session=boto3, region
         for i in response['Items']:
             results.append(json.dumps(i, cls=DecimalEncoder))
 
+        # Continue if there are more records
+        while 'LastEvaluatedKey' in response:
+            response = table.query(**dynamo_table_query_kwargs)
+            for i in response['Items']:
+                results.append(json.dumps(i, cls=DecimalEncoder))
+
     return results
 
 def scan_table(table_name, session=boto3, region_name='us-east-1', **dynamo_table_scan_kwargs):
@@ -136,8 +142,10 @@ def scan_table(table_name, session=boto3, region_name='us-east-1', **dynamo_tabl
         # Continue scanning if there are more records
         while 'LastEvaluatedKey' in response:
             scan_kwargs = {'ExclusiveStartKey':response['LastEvaluatedKey']}
+            #Rebuild kwargs
             for kwarg in dynamo_table_scan_kwargs:
                 scan_kwargs[kwarg] = dynamo_table_scan_kwargs[kwarg]
+            #Get results
             response = table.scan(**scan_kwargs)
             for i in response['Items']:
                 results.append(json.dumps(i, cls=DecimalEncoder))
