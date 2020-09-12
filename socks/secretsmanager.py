@@ -35,6 +35,10 @@ def get_secret(secret_name, session=boto3, region_name='us-east-1', **secrets_cl
             print("The request was invalid due to:", e)
         elif e.response['Error']['Code'] == 'ResourceNotFoundException':
             print("The requested secret " + secret_name + " was not found")
+        elif e.response['Error']['Code'] == 'AccessDeniedException':
+            print(f"You do not have permissions to access the requested secret, {secret_name}")
+        else:
+            raise e
     else:
         if 'SecretString' in response:
             return response['SecretString']
