@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-# aws-socks <small>0.2.4</small>
+# aws-socks <small>0.2.5</small>
 
 > Most AWS tasks are solved problems. Stop reinventing the wheel.
 
