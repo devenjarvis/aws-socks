@@ -135,7 +135,10 @@ def scan_table(table_name, session=boto3, region_name='us-east-1', **dynamo_tabl
 
         # Continue scanning if there are more records
         while 'LastEvaluatedKey' in response:
-            response = table.scan()
+            scan_kwargs = {'ExclusiveStartKey':response['LastEvaluatedKey']}
+            for kwarg in dynamo_table_scan_kwargs:
+                scan_kwargs[kwarg] = dynamo_table_scan_kwargs[kwarg]
+            response = table.scan(**scan_kwargs)
             for i in response['Items']:
                 results.append(json.dumps(i, cls=DecimalEncoder))
 
