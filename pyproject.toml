@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "aws-socks"
-version = "0.2.3"
+version = "0.2.5"
 description = "A wrapper for boto3 to provide one-liners for common AWS tasks."
-authors = ["Deven Jarvis <devenjarvis@gmail.com>"]
+authors = ["Deven Jarvis <devenjarvis@gmail.com>", "Chris Jones"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/devenjarvis/aws-socks"
